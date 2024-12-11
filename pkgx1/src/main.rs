@@ -13,6 +13,23 @@ enum List {
 use List::{Cons, Nil};
 
 fn main() {
+    let mut x = 1;
+
+    // as *mut i32:
+    // The as *mut i32 converts the mutable reference (&mut x) into a raw mutable pointer (*mut i32).
+    // Raw pointers are not tracked by the borrow checker. This means the borrow checker no longer enforces rules about aliasing for y and z.
+    let y = &mut x as *mut i32;
+    let z = &mut x as *mut i32;
+
+    // Modify `x` through raw pointers inside `unsafe`
+    unsafe {
+        *y += 1; // Modify `x` via `y`
+        *z += 1; // Modify `x` via `z`
+    }
+
+    println!("x: {}", x); // Output: 3
+
+
     let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
     println!("{:?}", list);
 
