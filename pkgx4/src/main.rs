@@ -42,6 +42,7 @@ fn main() {
     {
         let branch = Rc::new(Node {
             value: 5,
+            // Weak reference to parent: Won't destroy the parent when the child is destroyed
             parent: RefCell::new(Weak::new()),
             children: RefCell::new(vec![Rc::clone(&leaf)]),
         });
