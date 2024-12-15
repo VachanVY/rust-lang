@@ -44,7 +44,34 @@ fn main() {
     let _coin = value_in_cents(Coin::Quarter(UsState::California));
 
     plus_one(Some(5));
-    plus_one(None);    
+    plus_one(None);
+
+    enum MyEnum {
+        Variant1(i32, String),
+        Variant2(i32),
+    }
+    
+    let value = MyEnum::Variant1(10, String::from("Hello"));
+    
+    if let MyEnum::Variant1(x, y) = value {
+        println!("x: {}, y: {}", x, y);  // This will run because `value` is `Variant1(10, "Hello")`
+    }
+
+    let result: Result<i32, &str> = Ok(42);
+
+    if let Ok(value) = result {
+        println!("Operation succeeded with value: {}", value); // This will run because `result` is `Ok(42)`
+    } else {
+        println!("Operation failed");
+    }
+
+    let some_number = Some(10);
+
+    if let Some(value) = some_number {
+        println!("The number is {}", value); // This will run because `some_number` is `Some(10)`
+    } else {
+        println!("No number found");
+    }    
 }
 
 fn plus_one(x: Option<i32>) -> Option<i32> {
