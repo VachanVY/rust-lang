@@ -39,7 +39,16 @@ fn main() {
     Pilot::fly(&person);
     Wizard::fly(&person);
     person.fly();
-    
+
+    // TYPES
+    type uint = u32;
+    let a: uint = 10;
+    let b: u32 = 20;
+    println!("{}", a+b);
+}
+
+fn bar() -> ! { // ! is the never type
+    panic!();
 }
 
 #[derive(Debug, PartialEq)]
