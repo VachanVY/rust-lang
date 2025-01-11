@@ -40,3 +40,10 @@ impl fmt::Display for Wrapper {
         write!(f, "[{}]", self.0.join(", "))
     }
 }
+
+use hello_macro::HelloMacro;
+use hello_macro_derive::HelloMacro; 
+
+#[derive(HelloMacro)]
+struct Pancakes;
+
